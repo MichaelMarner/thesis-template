@@ -1,0 +1,65 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               Document Setup                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{thesis}
+\usepackage{unisa}
+\usepackage{setspace}
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{List of Abbreviations}
+\doublespace
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Thesis Information                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thesistitle{A Latex PhD Template} 
+\def\theauthor{Michael Robert Marner}
+
+% Commented out by default, but you can edit the title page to make author
+% qualifications appear
+\def\qualifications{Bachelor of Information Technology (computing and multimedia) (honours)}
+\def\supervis{Your Primary Supervisor}
+\def\assoc{Your Secondary/Associate Supervisor}
+\lab{Your Research Lab}
+\def\school{Your School}
+\def\division{Your Division}
+\uni{Your University}
+
+\year{2015}
+\month{March}
+\city{Adelaide}
+
+\thesisquote{Some people like an inspirational quote at the start of there thesis. Others don't}{Michael Marner}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                              Bibliography Stuff                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addbibresource{references.bib}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 Preface Stuff                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\include{00-titlepage}
+\cleardoublepage
+\copyrightpage
+\include{00-abstract}
+\include{00-publications}
+\include{00-acknowledgements}
+\include {00-abbreviations}
+\include{00-toc}
+\include{00-quotepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                  Chapters                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\include{chapter-introduction}
+\include{99-bibliography}
+
+\end{document}
