@@ -25,6 +25,11 @@ That said, with some adjustments this template should be useful for anybody.
 1. Tweak the styles as necessary
 1. Write your damn thesis!
 
+## Example
+
+This is what I used to write my PhD Thesis. You can check it out here:
+http://www.20papercups.net/phd-thesis/
+
 I'm happy to accept Pull Requests for improvements on this template.
 
 Happy Writing!
