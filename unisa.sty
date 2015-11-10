@@ -1,0 +1,379 @@
+% UniSA proposal style package. 
+% 
+% I used this style for my thesis proposal at the School of CIS, University of
+% South Australia.
+% You are free to modify and redistribute the style as long as you keep the
+% copyright notices intact.
+%
+% Peter Hutterer, peter@cs.unisa.edu.au
+%
+% This package is a modification of the hagenberg.sty, 
+% originally written by Wilhelm Burger, wilhelm.burger@fh-hagenberg.at
+%
+
+\ProvidesPackage{unisa}[]
+\def\Version{0.1} % package version number
+\typeout{Package: unisa v\Version, 13-12-2004, Peter Hutterer, School of
+Computer and Information Science, University of South Australia}
+
+% -------------- Required Packages -------------------------
+
+% Package URL is to format URLs properly 
+\RequirePackage{url}
+\urlstyle{sf}
+
+\usepackage[utf8]{inputenc}
+
+\RequirePackage{verbatim}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage{float}
+\RequirePackage{tabularx}
+\floatstyle{plain}
+
+\RequirePackage[small, rm]{subfigure}
+
+
+\RequirePackage[small,bf]{caption}
+\setlength{\captionmargin}{5mm}
+\setlength{\abovecaptionskip}{2mm}
+\setlength{\belowcaptionskip}{2mm}
+
+% scales math modes
+\RequirePackage{exscale}
+% for quotes in verbatims
+\RequirePackage{upquote}
+
+% for \citet, \citep commands
+%\RequirePackage[round,colon]{natbib}
+\RequirePackage[natbib=true,style=alphabetic,backend=biber,maxbibnames=99, maxcitenames=99,firstinits=true,doi=false,url=false,isbn=false]{biblatex}
+\DeclareNameAlias{default}{last-first}
+\renewcommand{\cite}{\citep} 
+
+\usepackage{listings}
+
+% This sets up how code listing looks
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+% numbers=left,                   % where to put the line-numbers
+% numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+% stepnumber=2,                   % the step between two line-numbers. If it's 1 each line 
+% will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,	                % adds a frame around the code
+tabsize=4,	                % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+title=\lstname,                 % show the filename of files included with \lstinputlisting;
+stringstyle=\ttfamily,
+% also try caption instead of title
+escapeinside={\%*}{*)},         % if you want to add a comment within your code
+morekeywords={*,\ldots}            % if you want to add more keywords to the set
+}
+
+% -------------- Define environments ------------------------
+
+
+\newenvironment{sourcecode}%
+{\begin{minipage}{0.95\textwidth}%
+   \hrule%
+   \bigskip%
+   \begin{footnotesize}%
+}%
+{\end{footnotesize}
+   \hrule\end{minipage}%
+}
+
+% --------------- Macros -----------------------------------
+
+\newcommand{\bs}{\char '134} % Backslash character
+
+%inline fractions
+\def\fraction#1/#2{\leavevmode\kern.0em
+  \raise.5ex\hbox{\the\scriptfont0 #1}\kern-.1em
+  /\kern-.15em\lower.25ex\hbox{\the\scriptfont0 #2}}
+
+
+%characters for real, complex, etc numbers (AMS Blackboard)
+\RequirePackage{amsfonts}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% measurebox to check printouts
+\newcommand{\measurebox}[2]{% Parameters: #1=width, #2=height
+\setlength{\unitlength}{1.0mm}%
+\begin{picture}(#1,#2)%
+\linethickness{0.05mm}%
+\put(0,0){\dashbox{0.2}(#1,#2)%
+{\parbox{#1mm}{%
+\centering\footnotesize 
+%{\bf MEASUREBOX}\\ 
+Width $ = #1 {\rm\ mm}$\\
+Height $ = #2 {\rm\ mm}$
+}}}\end{picture}
+}
+
+% ------------- layout settings -----------------------------
+
+\nonfrenchspacing     
+\pagestyle{plain}
+
+% Make float placement easier    
+\renewcommand{\floatpagefraction}{.75} % before: .5
+\renewcommand{\textfraction}{.1}       % before: .2
+\renewcommand{\topfraction}{.8}        % before: .7
+\renewcommand{\bottomfraction}{.5}     % before: .3
+\setcounter{topnumber}{3}              % before: 2
+\setcounter{bottomnumber}{2}           % before: 1
+\setcounter{totalnumber}{5}            % before: 3
+
+\setlength{\itemsep}{0pt}
+
+%-------------- setup for title page ------------------------
+
+\newcommand{\@supervis}{Principle supervisor??}
+\newcommand{\supervisor}[1]{
+  \renewcommand{\@supervis}{#1}
+}
+
+\newcommand{\@assoc}{Associate supervisor??}
+\newcommand{\associatesupervisor}[1]{
+  \renewcommand{\@assoc}{#1}
+}
+
+\newcommand{\@lab}{Lab??}
+\newcommand{\lab}[1]{
+  \renewcommand{\@lab}{#1}
+}
+\newcommand{\@school}{School??}
+\newcommand{\school}[1]{
+  \renewcommand{\@school}{#1}
+}
+
+\newcommand{\@division}{Division??}
+\newcommand{\division}[1]{
+  \renewcommand{\@division}{#1}
+}
+
+\newcommand{\@uni}{Uni??}
+\newcommand{\uni}[1]{
+  \renewcommand{\@uni}{#1}
+}
+
+\newcommand{\@address}{Address??}
+\newcommand{\address}[1]{
+  \renewcommand{\@address}{#1}
+}
+
+\newcommand{\@suburb}{Suburb??}
+\newcommand{\suburb}[1]{
+  \renewcommand{\@suburb}{#1}
+}
+
+\newcommand{\@month}{Month??}
+\renewcommand{\month}[1]{
+  \renewcommand{\@month}{#1}
+}
+
+\newcommand{\@year}{Year??}
+\renewcommand{\year}[1]{
+  \renewcommand{\@year}{#1}
+}
+
+\newcommand{\@city}{City??}
+\newcommand{\city}[1]{
+  \renewcommand{\@city}{#1}
+}
+
+
+\newcommand{\proposaltitle}{
+  \@proptitle
+  \@copyrightpage
+}
+
+
+% creates a simple copyrightpage
+% page numbering is set to two (title page is included)
+\newcommand{\@copyrightpage}{
+\newpage
+\thispagestyle{plain}
+\rule{0mm}{1mm}
+\begin{center}
+	\vspace{75mm} Copyright \copyright\ \@year\ \\ \vspace{3mm} \theauthor\\
+\vspace{3mm} All rights reserved
+\end{center}
+}
+
+\newcommand{\copyrightpage}{\@copyrightpage\clearpage}
+
+% displays a box size 10x5 cm on a new page in a unnumbered chaper.
+\newcommand{\printcheck}{
+\chapter*{}
+\begin{center}
+{\Large --- Check printing size, remove after printing --- }
+\bigskip
+\measurebox{100}{50} % width an length in mm
+\bigskip
+\end{center}
+}
+
+
+%--------- THESIS STUFF -----------------
+
+% author qualifications
+\newcommand{\@quals}{}
+\newcommand{\qualifications}[1]{
+  \renewcommand{\@quals}{#1}
+
+}
+
+% Setup for the quote page
+\newcommand{\@thesisquote}{Quote??}
+\newcommand{\@thesisquoteby}{Quote by??}
+\newcommand{\thesisquote}[2]{
+  \renewcommand{\@thesisquote}{#1}
+  \renewcommand{\@thesisquoteby}{#2}
+
+}
+
+
+
+\newcommand{\@quotepage}{
+    \newpage
+    \thispagestyle{plain}
+    \vspace*{50mm}
+    \setlength{\unitlength}{1cm}
+    \begin{center}
+        \begin{picture}(8, 0)
+            \put(0, 1.8){
+                \parbox{7cm}{
+                    \@thesisquote \\
+
+                    \raggedleft % align right
+                    \emph{\@thesisquoteby}
+                }
+            }
+        \end{picture}
+
+
+    \end{center}
+}
+
+\newcommand{\quotepage}{\@quotepage\cleardoublepage}
+
+
+\newcommand{\@declarationpage}{
+    \newpage
+    \thispagestyle{plain}
+    \chapter*{Declaration}
+    \reset@font
+    I declare that:
+
+    \begin{itemize}
+        \item this thesis presents work carried out by myself and does not
+            incorporate without acknowledgment any material previously
+            submitted for a degree or diploma in any university;
+        \item
+            to the best of my knowledge it does not contain any materials
+            previously published or written by another person except where due
+            reference is made in the text; and all substantive contributions
+            by others to the work presented, including jointly authored
+            publications, is clearly acknowledged.
+    \end{itemize}
+    
+%% \begin{figure}[h]
+%% \hspace{20pt}
+%% \includegraphics[width=5cm]{images/00/author_sig}
+%% \vspace{2pt}
+%% \end{figure}
+
+    \vspace{2.5cm}
+    \theauthor
+
+    \@city, \@month~\@year
+
+%%     \vspace{1.5cm}
+%% 
+%%     \supervis
+%% 
+%%     \@city, \@month~\@year
+%% 
+%%     \vspace{1.5cm}
+%%     
+%%     \assoc
+%% 
+%%     \@city, \@month~\@year
+}
+
+
+\newcommand{\declarationpage}{\@declarationpage\clearpage}
+
+
+% make sure subsubsections are numbered too.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% from http://zoonek.free.fr/LaTeX/LaTeX_samples_chapter/0.html
+% example 31
+% This is the definition for the chapter header.
+\usepackage{helvet}
+\def\@makechapterhead#1{
+    \vspace*{20\p@}
+    {\raggedleft
+        {\parindent \z@ \reset@font \fontsize{25ex}{05ex}
+         \rmfamily\thechapter\par\nobreak} 
+     \vskip 7mm
+     \Huge \bfseries #1\par\nobreak
+     \vskip 40 \p@
+    }
+}
+
+%--------------FONT STUFF------------
+%The following sets Palintino as the font to use.
+\renewcommand{\rmdefault}{ppl}
+
+%set 1.5 spacing between the lines
+\usepackage{setspace}
+
+%margins (according to the unisa style policy
+%read http://web.image.ufl.edu/help/latex/margins.shtml for more info about
+%margins
+
+%the oddside margin is the margin on the left hand side of the page of the odd
+%page numbers also it is preceeded by 1 inch
+\oddsidemargin 0.96cm
+
+%the evenside margin is the margin on the left hand side of the page of the even
+%page numbers also it is preceeded by 1 inch
+\evensidemargin -0.54cm
+
+%texwidth defines the width of the text body
+\textwidth 15.5cm
+
+%textheight defines the height of the text body (keep in mind that there is a
+%header and footer that need to fit above and below the text body).
+\textheight 23cm
+
+%topmargin specifies the distance from the top of the piece of paper to the
+%start of the header, relative to 1inch in. That is \topmargin is specified in
+%addition to a border of already 1 inch. I want a margin of 2cm therefore I take
+%of 0.54cm which leaves 2cm.
+\topmargin -0.54cm
+
+\usepackage{color}
+
+%\newcommand{\reviewercomment}[2]{\colorbox{red}{\textbf{{\color{yellow}#1 COMMENT: #2}}}}
+\newcommand{\reviewercomment}[2]{{\color{red}#1 #2}}
+
+\newcommand{\wayne}[1]{\reviewercomment{WAYNE}{#1}}
+
+\newcommand{\me}[1]{\reviewercomment{Michael: }{#1}}
