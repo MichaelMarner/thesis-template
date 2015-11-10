@@ -8,6 +8,10 @@ This template is particularly suited to students at the University of South
 Australia. It meets the guidelines specified by the Graduate Research Office.
 That said, with some adjustments this template should be useful for anybody.
 
+I'm happy to accept Pull Requests for improvements on this template.
+
+Happy Writing!
+
 ## Features:
 
  * Nice cover page
@@ -30,6 +34,4 @@ That said, with some adjustments this template should be useful for anybody.
 This is what I used to write my PhD Thesis. You can check it out here:
 http://www.20papercups.net/phd-thesis/
 
-I'm happy to accept Pull Requests for improvements on this template.
 
-Happy Writing!
